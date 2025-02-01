@@ -1,0 +1,7 @@
+{%extends 'layout.html'%}
+{%block title%} Confirmation {%endblock%}
+{%block content%}
+	<h2>Marks Added</h2>
+	<p>Marks for {{ student.name }} (Roll No: {{ student.roll_number}}) have been successfully updated to {{ marks }}.</p>
+	<a href="{% url 'admin_panel' %}">Back to Admin Panel</a>
+{%endblock%}

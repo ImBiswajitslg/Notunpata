@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block title%} Delete School {% endblock %}
+{% block content%}
+	<h2>Confirm Delete</h2>
+	<p>Are you sure you want to delete the school "{{ school.name }}"? This will also delete all students associated with it.</p>
+	<form method="post">
+		{% csrf_token %}
+		<button type="submit">Yes, Delete</button>
+		<a href="{% url 'admin_panel' %}">Cancel</a>
+	</form>
+{%endblock%}

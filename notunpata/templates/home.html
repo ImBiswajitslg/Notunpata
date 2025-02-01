@@ -1,0 +1,10 @@
+{% extends "layout.html"%}
+{% block title %}
+	Home
+{%endblock%}
+{% block content%}
+	<h1>Welcome to the <strong>Notunpata</strong> student portal</h1><br>
+	<a href="{% url 'student:add_student' %}">Add Student</a><br>
+	Generate <a href="{% url 'student:generate_admit_card' %}">Admit </a>Card 
+	<p>Go to <a href="{% url 'admin:index'%}">Admin</a> page</p>
+{%endblock%}

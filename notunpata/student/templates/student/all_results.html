@@ -1,0 +1,25 @@
+{% extends 'layout.html'%}
+{%block title%}Result{%endblock%}
+{%block content%}
+	<h2>Student Results (Descending Order)</h2>
+
+		<table border="1">
+		    <tr>
+		        <th>Name</th>
+		        <th>Roll No</th>
+		        <th>Marks</th>
+		    </tr>
+		    {% for entry in students_with_marks %}
+		        <tr>
+		            <td>{{ entry.student.name }}</td>
+		            <td>{{ entry.student.roll_number }}</td>
+		            <td>{{ entry.marks }}</td>
+		        </tr>
+		    {% endfor %}
+		</table>
+
+		<br>
+		<a href="{% url 'student:download_results_pdf' %}">
+		    <button>Download PDF</button>
+		</a>
+{%endblock%}

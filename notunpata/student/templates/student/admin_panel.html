@@ -1,0 +1,20 @@
+{% extends 'layout.html'%}
+{% block title%} Admin Panel{% endblock%}
+{% block content%}
+	<br>
+	<div>
+		<a href="{% url 'student:add_student' %}">Add Students</a><br>
+		<a href="{% url 'student:add_marks' %}">Add Marks</a><br>
+		<a href="{% url 'student:marks_by_school' %}">Marks by School</a><br>
+		<a href="{% url 'student:all_results' %}">Results of the students</a><br>
+	</div>
+	<h2>Schools</h2>
+	<ul>
+	    {% for school in schools %}
+	        <li>
+	            {{ school.name }}
+	            {# <a href="{% url 'student:delete_school' school.id %}">Delete</a> #}
+	        </li>
+	    {% endfor %}
+	</ul>
+{%endblock%}

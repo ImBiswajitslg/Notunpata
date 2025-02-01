@@ -1,0 +1,34 @@
+{% extends 'layout.html'%}
+{% block title%}Marks by School{%endblock%}
+{% block content%}
+	<form method="POST">
+	    {% csrf_token %}
+	    <label for="school">Select School:</label>
+	    <select name="school_name" required>
+	        <option value="">-- Select School --</option>
+	        {% for school in schools %}
+	            <option value="{{ school.name }}">{{ school.name }}</option>
+	        {% endfor %}
+	    </select>
+	    <button type="submit">Get Marks</button>
+	</form>
+	{% if students_with_marks %}
+    <h3>Marks List</h3>
+    <table border="1">
+        <tr>
+            <th>Student Name</th>
+            <th>Roll No</th>
+            <th>Marks</th>
+        </tr>
+        {% for entry in students_with_marks %}
+            <tr>
+                <td>{{ entry.student.name }}</td>
+                <td>{{ entry.student.roll_no }}</td>
+                <td>{{ entry.marks }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+	{% elif students_with_marks is not None %}
+	    <p>No students found for this school.</p>
+	{% endif %}
+{%endblock%}

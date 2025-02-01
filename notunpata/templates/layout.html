@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
+		{% block title%}
+			Notunpata
+		{%endblock%}
+	</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<!--<script src="{% static 'js/main.js' %}"></script>-->
+</head>
+<body>
+	<nav>
+		<a href="/"> Home </a><br>
+		{% if user.is_authenticated %}
+			<p>Hello, {{ user.username }}</p>
+			{% if user.is_superuser %}
+				<a href="{% url 'student:admin_panel' %}">Admin</a>
+			{% else %}
+				<a href="{% url 'student:add_student'%}">Add Student</a>
+			{% endif %}
+			<a href="{% url 'student:logout' %}">Logout</a>
+		{% else %}
+			Please <a href="{% url 'student:login' %}">Login</a> or 
+			<a href="{% url 'student:register' %}">Register</a>
+		{% endif %}
+	</nav>
+	<main>
+		{% block content%}
+		{% endblock %}
+	</main>
+	{%block script%}{%endblock%}
+	<footer>
+		<p>Copyright &copy; 2025 Notunpata. All rights reserved.</p>
+	</footer>
+</body>
+</html>

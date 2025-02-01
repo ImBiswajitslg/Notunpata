@@ -1,0 +1,17 @@
+{% extends 'layout.html'%}
+{% block title%} Confirm Student Details{% endblock%}
+{%block content%}
+	<h1>Confirm Student Details</h1>
+	<form method="post">
+		{% csrf_token %}
+        <p>Name: {{ form.name.value }}</p>
+        <p>Father's Name: {{ form.father_name.value }}</p>
+        <p>Mobile No: {{ form.mobile_no.value }}</p>
+        <p>Class: {{ form.student_class.value }}</p>
+        <p>School: {{ form.school_name.value }}</p>
+        <p>Roll Number: {{ form.roll_number.value }}</p>
+        {{ form.as_p }}
+        <button type="submit" name="confirm">Confirm</button>
+        <a href="{% url 'student/add_student' %}">Cancel</a>
+	</form>
+{%endblock%}
